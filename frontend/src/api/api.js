@@ -43,17 +43,17 @@ const authMe = async() => {
 } 
 
 const deleteMessage = async(id) => {
-    const res = await apiInstance.delete("/messages/${id}")
+    const res = await apiInstance.delete(`/messages/${id}`)
     return res
 } 
 
 const likeMessage = async(id) => {
-    const res = await apiInstance.post("/messages/${id}/like")
+    const res = await apiInstance.post(`/messages/${id}/like`)
     return res
 } 
 
 const reportMessage = async(id) => {
-    const res = await apiInstance.post("/messages/${id}/report")
+    const res = await apiInstance.post(`/messages/${id}/report`)
     return res
 } 
 
