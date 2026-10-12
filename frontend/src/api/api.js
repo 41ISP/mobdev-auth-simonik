@@ -2,7 +2,7 @@ import axios from "axios";
 import { useUserStore } from "../store/useUserStore";
 
 const apiInstance = axios.create({
-    baseURL:"https://api.kitek-pg.ru/api/feedback/",
+    baseURL:"https://laughing-goldfish-7vq75xxq64p5cr4qq-3001.app.github.dev/api",
     headers: {
         "Contet-Type": "application/json", 
         "Accept": "application/json"
@@ -12,7 +12,7 @@ const apiInstance = axios.create({
 apiInstance.interceptors.request.use((config) => {
 const { session } = useUserStore.getState()
         if(session?.token) {
-            config.headers.Authorization = 'Bearer ${session.token}'        
+            config.headers.Authorization = `Bearer ${session.token}`        
         }
         return config
 })
