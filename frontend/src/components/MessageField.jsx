@@ -5,15 +5,16 @@ import TextArea from './TextArea'
 const MessageField = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        
         const message = {
             content: e.target.content.value
         }
+        
         try {
             await api.sendMessage(message)
+            await getMessages()
         } catch (error) {
-        console.error(error)
-            
+            console.error(error)
         }
     }
     return (
@@ -22,7 +23,7 @@ const MessageField = () => {
                 <div className="create-message-card">
                     <h2 className="create-message-title">Создать сообщение</h2>
                     <form
-                    onSubmit={handleSubmit}
+                        onSubmit={handleSubmit}
                         className="create-message-form">
                         <TextArea
                             name="content"

@@ -8,16 +8,17 @@ import { useUserStore } from "../store/useUserStore"
 const SignUp = () => {
     const [error, setError] = useState("")
     const navigate = useNavigate()
-     const { setSession } = useUserStore()
+    const { setSession } = useUserStore()
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         setError("")
 
-        if(e.target.password.value !== e.target.password2.value){
+        if (e.target.password.value !== e.target.password2.value) {
             setError("Пароли не совпадают")
             return
         }
+
         const user = {
             username: e.target.username.value,
             email: e.target.email.value,
@@ -29,8 +30,8 @@ const SignUp = () => {
             setSession(data.data)
             navigate("/")
         } catch (error) {
-         setError(error.response.data.error)
-         console.error(error)   
+            setError(error.response.data.error)
+            console.error(error)
         }
     }
 
@@ -55,7 +56,7 @@ const SignUp = () => {
                         name="email"
                         type="email"
                         label="Почта"
-                        minlength={4}
+                        minlength={6}
                         maxlength={40}
                         required
                         placeholder="Введите почту"
@@ -64,8 +65,8 @@ const SignUp = () => {
                         id="password"
                         name="password"
                         type="password"
-                        minlength={6}
-                        maxlength={40} 
+                        minlength={4}
+                        maxlength={40}
                         label="Пароль"
                         required
                         placeholder="Введите пароль"
@@ -73,9 +74,9 @@ const SignUp = () => {
                     <Input
                         id="password2"
                         name="password2"
-                        minlength={6}
-                        maxlength={40}
                         type="password"
+                        minlength={4}
+                        maxlength={40}
                         label="Подтверждение пароля"
                         required
                         placeholder="Подтвердите пароль"
